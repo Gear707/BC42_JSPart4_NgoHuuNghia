@@ -1,0 +1,31 @@
+html, body{
+    font-size: 18px;
+}
+
+body{
+    background-color: cornsilk;
+}
+
+a{
+    color: black;
+}
+
+a:hover{
+    color: brown;
+}
+
+h2{
+    color: darkslategray;
+}
+
+.nav .nav-item .nav-link {
+    margin: 0 10px;
+    border: 1px solid #BFBFBF;
+    background-color: white;
+    box-shadow: 0 0 5px #aaaaaa;
+}
+
+.nav .nav-item .nav-link.active,.nav .nav-pills .show > .nav-link{
+    background-color: brown;
+    color: white;
+}
