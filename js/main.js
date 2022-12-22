@@ -91,10 +91,10 @@ getEle('btnCount').onclick = function () {
 
     // progress
     let i = 0; // tạo biến đếm i
-    let countResult = '';
     if (!n1 || !n2 || !n3) {
         alert('Dữ liệu không hợp lệ.');
-    }
+        return 0;
+    } 
     else {
         if (n1 % 2 == 0) {
             i++;
@@ -114,11 +114,10 @@ getEle('btnCount').onclick = function () {
         else {
             i;
         }
-        countResult = 'Có ' + i + ' số chẵn, ' + (3 - i) + ' số lẻ';
     }
 
     // output
-    getEle('evenOdd').innerHTML = countResult;
+    getEle('evenOdd').innerHTML = 'Có ' + i + ' số chẵn, ' + (3 - i) + ' số lẻ';
 }
 
 
@@ -160,6 +159,7 @@ getEle('btnGuess').onclick = function () {
             alert('Cạnh tam giác phải là một số dương.');
         }
     }
+
     // output
     getEle('triangle').innerHTML = tamGiac;
 }
@@ -348,7 +348,7 @@ getEle('btnCountDays').onclick = function () {
     let dateP6 = 0;
     // let daysNum = '';
     if (monthP6 > 0 && monthP6 <= 12 && yearP6 >= 1920) {
-        if (monthP6 == 4 || month == 6 || month == 9 || month == 11) {
+        if (monthP6 == 4 || monthP6 == 6 || monthP6 == 9 || monthP6 == 11) {
             dateP6 = 30;
         }
         else if (monthP6 == 2) {
@@ -390,9 +390,9 @@ getEle('btnReadNum').onclick = function () {
     let units = num3Digits % 100 % 10;
 
     // tạo biến đọc cho từng hàng
-    let readHundreds = '';
-    let readTens = '';
-    let readUnits = '';
+    let readHundreds = '';  // hàng trăm
+    let readTens = '';  // hàng chục
+    let readUnits = '';  // hàng đơn vị
 
     if (hundreds == 0 || num3Digits <= 0 || num3Digits > 999) {
         alert('Dữ liệu không hợp lệ.');
@@ -499,7 +499,6 @@ getEle('btnReadNum').onclick = function () {
             default:
                 break;
         }
-
         switch (tens) {
             case 0:
                 readTens = 'lẻ';
@@ -534,7 +533,6 @@ getEle('btnReadNum').onclick = function () {
             default:
                 break;
         }
-
         switch (units) {
             case 0:
                 readUnits = '';
@@ -605,9 +603,13 @@ getEle('btnSearch').onclick = function () {
     let d1 = Math.sqrt(Math.pow((coX - sX1), 2) + Math.pow((coY - sY1), 2));
     let d2 = Math.sqrt(Math.pow((coX - sX2), 2) + Math.pow((coY - sY2), 2));
     let d3 = Math.sqrt(Math.pow((coX - sX3), 2) + Math.pow((coY - sY3), 2));
-    let furthest = '';
+    let furthest = '';  // tạo biến gán cho sinh viên xa trường nhất
 
-    if (sX1 > 0 && sX2 > 0 && sX3 > 0 && sY1 > 0 && sY2 > 0 && sY3 > 0) {
+    if (!sX1 || !sX2 || !sX3 || !sY1 || !sY2 || !sY3 || !coX || !coY) {
+        alert('Dữ liệu không hợp lệ.');
+        return 0;
+    }
+    else {
         if (d1 > d2 && d1 > d3) {
             furthest = student1;
         }
@@ -617,10 +619,6 @@ getEle('btnSearch').onclick = function () {
         else if (d3 > d2 && d3 > d1) {
             furthest = student3;
         }
-    }
-    else {
-        alert('Dữ liệu không hợp lệ.');
-        return 0;
     }
 
     // output
